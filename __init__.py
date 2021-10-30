@@ -26,7 +26,7 @@ app = Flask(__name__)
 def get_model():
     global model
     model=load_model('doodle.h5')
-    print('Model loaded')
+    #print('Model loaded')
 
 #decoding an image from base64 into raw representation
 def convertImage(imgData1):
@@ -41,7 +41,7 @@ def normalize(data):
 def index():
 	#initModel()
 	#render out pre-built HTML file right on the index page
-	return render_template("index.html")
+	return render_template("i.html")
 
 get_model()
 
@@ -50,7 +50,7 @@ def predict():
    d={1:'banana',2:'apple',3:'bicycle',4:'car',5:'chair',6:'shoe',7:'lollipop',8:'sandwich',9:'headphones',10:'eyeglasses',11:'tshirt',12:'diamond'}
    imgData = request.get_data()
    convertImage(imgData)
-   print("debug")
+   #print("debug")
 	#read the image into memory
    x = imread('output.png',mode='L')
    x = np.invert(x)
@@ -70,8 +70,8 @@ def predict():
    x=normalize(x)
    val = model.predict(np.array([x]))
    #out = model.predict(x)
-   print(val)
-   print(np.argmax(val))
+   #print(val)
+   #print(np.argmax(val))
 #print "debug3"
 #convert the response to a string
    response = d[np.argmax(val)+1]
