@@ -1,10 +1,14 @@
-@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
 
-* { margin: 0; padding: 0; }
 
-html
+
+html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+body
 {
-	background-image: -webkit-radial-gradient(top center, circle cover, #E7E7E8 30%, #C6C6C6);
+	/*background-image: -webkit-radial-gradient(top center, circle cover, #E7E7E8 30%, #C6C6C6);
 	background-image: -moz-radial-gradient(top center, circle cover, #E7E7E8 30%, #C6C6C6);
 	background-image: -ms-radial-gradient(top center, circle cover, #E7E7E8 30%, #C6C6C6);
 	background-image: -o-radial-gradient(top center, circle cover, #E7E7E8 30%, #C6C6C6);
@@ -16,36 +20,78 @@ html
 	-ms-user-select: none;
 	-o-user-select: none;
 	user-select: none;
+	overflow: hidden;*/
+
+	
+	width: 100%;
+    height: 100%;
+	margin: 0;
 	overflow: hidden;
+	font-family: 'Caveat', cursive;
+	min-height: 100%;
+	background-image: url("{{ url_for('static', filename='bg.png') }}");
   
   
 }
 
-h1
+h1,.generateText,#prediction
 {
-	position: absolute;
-	top: 20px;
+	margin: 0;
 	left: 0;
 	right: 0;
 	text-align: center;
-	font-family: 'Open Sans', Helvetica;
-	color: #807F7D;
-	font-size: 25px;
-	font-weight: 300;
+	font-family: 'Caveat', cursive;
+	font-size: 50px;
 	z-index: -1;
+	color: #4DAF7C; 
+	font-weight: 400;
 }
 
-h1 span { color: #4DAF7C; font-weight: 400; }
-
-/* Debug */
-
-#debug
-{
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 5px;
+h1{
+	font-weight: 700;
 }
+.generateText,#prediction{
+	margin-top: 30px;
+	margin-bottom:30px; 
+	color:white;
+	font-size: 40px;
+}
+#generate,#result{
+	color: #4DAF7C;
+}
+canvas{
+	box-shadow: -8px 8px #4DAF7C, -3px 3px #4DAF7C, -2px 2px #4DAF7C;
+	border: 4px solid #4DAF7C;
+}
+button{
+	font-family: 'Caveat', cursive;
+	font-size:25px;
+	display: inline;
+	color: #333;
+    box-shadow: -4px 4px #4DAF7C, -2px 2px #4DAF7C, -1px 1px #4DAF7C;
+	border: 2px solid #4DAF7C;
+	margin: 2px;
+}
+button:active{
+	box-shadow: -2px 2px #4DAF7C, -2px 2px #4DAF7C, -1px 1px #4DAF7C;
+}
+.buttonprop{
+	height:40px;
+	width:8%;
+}
+.canvasContainer{
+	text-align: center;
+}
+.buttonContainer{
+
+	margin: 25px;
+	margin-top:30px; 
+	text-align: center;
+}
+canvas{
+	display: inline;
+}
+
 .myButton {
 	-moz-box-shadow: 0px 10px 14px -7px #3e7327;
 	-webkit-box-shadow: 0px 10px 14px -7px #3e7327;
