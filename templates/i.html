@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>the doodle game</title>
+    <link rel="icon" href="{{ url_for('static', filename='paint.png') }}">
+   <link rel="stylesheet" href="../static/style.css">
+   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+   <script language="javascript" type="text/javascript" src="../static/generate.js"></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body{
+    background-image: url("{{ url_for('static', filename='bg.png') }}");
+    }
+  </style>
+
+</head>
+
+<body>
+<div><h1>doodle predictor</h1></div>
+<div class="generateText">draw <span id="generate">car</span></div>
+<div class="canvasContainer">
+  <canvas id="canvas" width="280" height="280" style=" border-radius: 5px; cursor: crosshair;"></canvas>
+</div>
+<div class="buttonContainer">
+  <button class="buttonprop"  onclick="generate()">new</button>
+  <button class="buttonprop" id="clearButton" >clear</button>
+</div>
+<div id="prediction">predicted output<span id="result"></span></div>
+<script language="javascript" type="text/javascript" src="../static/index.js"></script>
+<script type="text/javascript">
+
+
+  var c=0;
+  var prev;
+  var blank;
+  setInterval(function(){
+    var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+    var canvasObj = document.getElementById("canvas");
+    if(c===0){ 
+      prev=canvasObj.toDataURL();
+      blank=canvasObj.toDataURL();
+      c=c+1;
+    }
+    var img = canvasObj.toDataURL();
+    if(!(prev===img || img===blank)){
+      
+        $.ajax({
+          type: "POST",
+          url: $SCRIPT_ROOT + "/predict/",
+          data: img,
+          success: function(data){
+            $('#result').text(" "+data);
+          }
+        });
+        prev=img;
+  }
+
+},3000);
+
+ </script>
+
+</body>
+</html>
