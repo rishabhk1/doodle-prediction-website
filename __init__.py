@@ -24,6 +24,8 @@ import logging
 #from load import *
 #initalize our flask app
 app = Flask(__name__)
+app.logger.addHandler(logging.StreamHandler(sys.stdout))
+app.logger.setLevel(logging.ERROR)
 
 def get_model():
     global model
