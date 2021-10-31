@@ -12,7 +12,8 @@ from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
 from keras.preprocessing.image import img_to_array
 from flask import render_template
-from scipy.misc import imsave, imread, imresize
+from imageio import imread
+from skimage.transform import resize
 import keras.models
 import sys
 import os
@@ -52,10 +53,10 @@ def predict():
    convertImage(imgData)
    #print("debug")
 	#read the image into memory
-   x = imread('output.png',mode='L')
+   x = imread('output.png',pilmode='L')
    x = np.invert(x)
 #make it the right size
-   x = imresize(x,(28,28))
+   x = resize(x,(28,28))
 #imshow(x)
 #convert to a 4D tensor to feed into our model
    x = np.invert(x)
