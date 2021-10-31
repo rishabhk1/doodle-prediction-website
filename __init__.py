@@ -6,7 +6,7 @@ import base64
 import io
 #from PIL import Image
 import keras
-from keras import backend as K
+#from keras import backend as K
 from keras.models import Sequential
 from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
@@ -18,7 +18,7 @@ import keras.models
 import sys
 import os
 import re
-from keras import backend as K
+#from keras import backend as K
 from keras.utils.conv_utils import convert_kernel
 #from load import *
 #initalize our flask app
