@@ -54,9 +54,7 @@ def predict():
    convertImage(imgData)
    #print("debug")
 	#read the image into memory
-   logging.info('image to be read')
-   x = imread('output.png',pilmode='L')
-   logging.info('image read')	
+   x = imread('output.png',pilmode='L')	
    x = np.invert(x)
 #make it the right size
    x = resize(x,(28,28))
