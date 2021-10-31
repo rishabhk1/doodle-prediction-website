@@ -60,7 +60,7 @@ def predict():
    x = resize(x,(28,28))
 #imshow(x)
 #convert to a 4D tensor to feed into our model
-   x = np.invert(x)
+   #x = np.invert(x)
    for i in range(len(x)):
         for j in range(len(x)):
             if x[i][j] >100:
