@@ -18,6 +18,7 @@ import keras.models
 import sys
 import os
 import re
+import logging
 #from keras import backend as K
 #from keras.utils.conv_utils import convert_kernel
 #from load import *
@@ -53,7 +54,9 @@ def predict():
    convertImage(imgData)
    #print("debug")
 	#read the image into memory
+   logging.info('image to be read')
    x = imread('output.png',pilmode='L')
+   logging.info('image read')	
    x = np.invert(x)
 #make it the right size
    x = resize(x,(28,28))
