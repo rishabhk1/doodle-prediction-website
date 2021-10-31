@@ -28,7 +28,7 @@ app = Flask(__name__)
 def get_model():
     global model
     model=load_model('doodle.h5')
-    #print('Model loaded')
+    app.logger.info('model loaded')
 
 #decoding an image from base64 into raw representation
 def convertImage(imgData1):
@@ -41,7 +41,7 @@ def normalize(data):
 
 @app.route('/')
 def index():
-	#initModel()
+	app.logger.info('home fetched')
 	#render out pre-built HTML file right on the index page
 	return render_template("i.html")
 
@@ -52,11 +52,9 @@ def predict():
    d={1:'banana',2:'apple',3:'bicycle',4:'car',5:'chair',6:'shoe',7:'lollipop',8:'sandwich',9:'headphones',10:'eyeglasses',11:'tshirt',12:'diamond'}
    imgData = request.get_data()
    convertImage(imgData)
-   #print("debug")
-	#read the image into memory
    x = imread('output.png',pilmode='L')	
+   app.logger.info('image created')
    x = np.invert(x)
-#make it the right size
    x = resize(x,(28,28))
 #imshow(x)
 #convert to a 4D tensor to feed into our model
@@ -71,6 +69,7 @@ def predict():
    x=x[:,:,np.newaxis]
    x=normalize(x)
    val = model.predict(np.array([x]))
+   app.logger.info('guess made')
    #out = model.predict(x)
    #print(val)
    #print(np.argmax(val))
