@@ -83,7 +83,7 @@ if __name__ == "__main__":
 #decide what port to run the app in
     #app.jinja_env.auto_reload = True
     #app.config['TEMPLATES_AUTO_RELOAD'] = True
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    #port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True)
 	#optional if we want to run in debugging mode
 	#app.run(debug=True)
