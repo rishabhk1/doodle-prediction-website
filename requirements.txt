@@ -1,5 +1,6 @@
-scipy==1.0.0
+imageio
+skimage
 flask==0.10.1
 gunicorn==19.9.0
-numpy==1.13.3
+numpy>=1.13.3
 keras==2.6.0
