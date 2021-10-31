@@ -1,7 +1,6 @@
 imageio
 scikit-image
-tensorflow
 flask==0.10.1
 gunicorn==19.9.0
-numpy>=1.13.3
+numpy==1.19.2
 keras==2.6.0
