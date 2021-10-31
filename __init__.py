@@ -4,7 +4,7 @@ from flask import request
 import numpy as np
 import base64
 import io
-#from PIL import Image
+from PIL import Image
 import keras
 #from keras import backend as K
 from keras.models import Sequential
@@ -57,7 +57,7 @@ def predict():
    x = imread('output.png',pilmode='L')	
    app.logger.info('image created')
    x = np.invert(x)
-   x = resize(x,(28,28))
+   x=Image.fromarray(x).resize(size=(28,28))
 #imshow(x)
 #convert to a 4D tensor to feed into our model
    #x = np.invert(x)
