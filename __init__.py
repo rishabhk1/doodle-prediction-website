@@ -56,8 +56,8 @@ def predict():
    convertImage(imgData)
    x = imread('output.png',pilmode='L')	
    app.logger.info('image created')
-   x = np.invert(x)
    x=Image.fromarray(x).resize(size=(28,28))
+   x = np.invert(x)
 #imshow(x)
 #convert to a 4D tensor to feed into our model
    #x = np.invert(x)
